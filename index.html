@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for You</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #surprise-box, #compliment, #poem, #flower, #lanterns {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .button {
+            background: #ff4e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            background: #ff3336;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .overlay video {
+            width: 90%;
+            max-height: 90vh;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    </audio>
+    
+    <h1 id="main-heading">Hey, Happy Valentines Day</h1>
+    <button class="button" id="start-button" onclick="startSurprise()">Click for a Surprise!</button>
+    
+    <div id="surprise-box">
+        <h2>💖 A Special Message for You 💖</h2>
+        <p>You are an amazing person, and I truly appreciate you! 🌸</p>
+        <button class="button" onclick="showCompliment()">Next</button>
+    </div>
+    
+    <div id="compliment">
+        <h2>🌟 You are...</h2>
+        <p id="random-compliment">Kind, beautiful, and intelligent!</p>
+        <button class="button" onclick="showPoem()">Next</button>
+    </div>
+    
+    <div id="poem">
+       <h2>🌸 A Thought for You</h2>  
+<p>Bright days, kind smiles, and laughter too,  
+   Wishing joy and sunshine just for you. ☀️😊</p>
+
+        <button class="button" onclick="showFlower()">Next</button>
+    </div>
+    
+    <div id="flower">
+        <h2>🌸 A Flower for You</h2>
+        <p>Just like this flower, you brighten the world around you!</p>
+        <button class="button" onclick="showLanterns()">Next</button>
+    </div>
+    
+    <div id="lanterns">
+        <h2>My heartfelt wish for you ✨💕</h2>
+        <p>May your days be filled with laughter, your heart with peace, and your dreams with endless possibilities. You are a light in this world—keep shining brightly! 💫💕</p>
+        <button class="button" onclick="showVideo()">Final Surprise</button>
+    </div>
+    
+    <div id="video-overlay" class="overlay">
+        <video controls autoplay muted loop>
+            <source src="song/WhatsApp Video 2025-02-02 at 11.45.18_9ab705b5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <script>
+        function startSurprise() {
+            document.getElementById("bg-music").play();
+            document.querySelector("#start-button").style.display = "none";
+            document.querySelector("#main-heading").style.display = "none";
+            document.querySelector("#surprise-box").style.display = "block";
+        }
+        function showCompliment() {
+            document.querySelector("#surprise-box").style.display = "none";
+            document.querySelector("#compliment").style.display = "block";
+        }
+        function showPoem() {
+            document.querySelector("#compliment").style.display = "none";
+            document.querySelector("#poem").style.display = "block";
+        }
+        function showFlower() {
+            document.querySelector("#poem").style.display = "none";
+            document.querySelector("#flower").style.display = "block";
+        }
+        function showLanterns() {
+            document.querySelector("#flower").style.display = "none";
+            document.querySelector("#lanterns").style.display = "block";
+        }
+        function showVideo() {
+            document.querySelector("#lanterns").style.display = "none";
+            document.querySelector("#video-overlay").style.display = "flex";
+        }
+    </script>
+</body>
+</html>
